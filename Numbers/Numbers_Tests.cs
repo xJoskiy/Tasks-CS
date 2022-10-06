@@ -11,17 +11,16 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Numbers.HashInit();
-            Random random = new Random();
-            for (int i = 0; i < 10000; i++)
-            {
-                Numbers.Convert(i, "female");
-                Console.WriteLine(" " + i.ToString());
-            }
+            //Numbers.HashInit();
+            //Random random = new Random();
+            //for (int i = 0; i < 1001; i++)
+            //{
+            //    Numbers.Convert(i, "female");
+            //    Console.WriteLine(" " + i.ToString());
+            //}
+            //Console.ReadKey();
 
-            Console.ReadKey();
-
-            //Numbers numbers = new Numbers();    
+            new Numbers();    
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Matrix
 {
     internal class Matrix
     {
-        public static void Rotate(ref int[,] arr)
+        public static void Rotate(int[,] arr)
         {
             int dim = arr.GetLength(0);
             for (int i = 0; i < dim; i++)
@@ -24,7 +24,7 @@ namespace Matrix
                 }
             }
         }
-        public static void Initialize(ref int[,] arr, int dim = 3)
+        public static void Initialize(out int[,] arr, int dim = 3)
         {
             arr = new int[dim, dim];
             for (int i = 0; i < dim; i++)
@@ -43,7 +43,7 @@ namespace Matrix
             Console.WriteLine();
         }
 
-        public static void Transpose(ref int[,] arr)
+        public static void Transpose(int[,] arr)
         {
             int N = arr.GetLength(0);
             for (int i = 0; i < N; i++)
@@ -63,15 +63,15 @@ namespace Matrix
             Console.Write("Enter dimensionality >= 3: ");
             int dim = int.Parse(Console.ReadLine());
             
-            Initialize(ref arr, dim);
+            Initialize(out arr, dim);
 
             Print(arr);
 
-            Transpose(ref arr);
+            Transpose(arr);
 
             Print(arr);
 
-            Rotate(ref arr);
+            Rotate(arr);
 
             Print(arr);
 
