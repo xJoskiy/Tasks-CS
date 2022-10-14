@@ -54,11 +54,44 @@ namespace Clock
         }
         static public string ComputeTime(float setDegrees, int hours, int minutes)
         {
-            float diff = 6 * minutes - 30 * hours % 360 + (float)minutes / 2;
-            int degToGo = 
-
-
-            return String.Format("{0}:{1}", );
+            float curDegree = ComputeDegree(hours, minutes);
+            bool up = true;
+            for (int h = hours, m = minutes + 1; h != (h + 2) % 24; m++)
+            {
+                h = (h + m / 60) % 24;
+                m %= 60;
+                if (up)
+                {
+                    curDegree += 5.5f;
+                    if (curDegree > 180)
+                    {
+                        curDegree = 180 - curDegree % 180;
+                        up = false;
+                    }
+                    if (curDegree <= setDegrees)
+                    {
+                        minutes = m;
+                        hours = h;
+                        break;
+                    }
+                }
+                else
+                {
+                    curDegree -= 5.5f;
+                    if (curDegree < 0)
+                    {
+                        curDegree = Math.Abs(curDegree);
+                        up = true;
+                    }
+                    if (curDegree >= setDegrees)
+                    {
+                        minutes = m;
+                        hours = h;
+                        break;
+                    }
+                }
+            }
+            return String.Format("{0}:{1}", hours, minutes);
         }
         static public float ComputeDegree(int hours, int minutes)
         {

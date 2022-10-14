@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Numbers
 {
-    internal class Numbers
+    public class Numbers
     {
         private static string[] numsStr = { "Cero", "Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Once", "Doce", "Trece", "Catorce", "Quince",
                                  "Dieciséis", "Diecisiete", "Dieciocho", "Diecinueve", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta", "Ochenta", "Noventa",
@@ -19,6 +19,7 @@ namespace ConsoleApp1
                               15, 16, 17, 18, 19, 20, 30, 40, 50, 60, 70, 80, 90,
                               100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
                             };
+
         private static Hashtable numsHt = new Hashtable();
 
         public static void HashInit()
@@ -26,9 +27,8 @@ namespace ConsoleApp1
             for (int i = 0; i < numsInt.Length; i++)
                 numsHt.Add(numsInt[i], numsStr[i]);
         }
-        public Numbers()
+        public static void Main(string[] args)
         {
-            HashInit();
             string[] sexArr = { "male", "female" };
             string input, sex;
             int number;
@@ -60,76 +60,80 @@ namespace ConsoleApp1
                 } while (true);
 
                 Console.Write("\nIn words: ");
-                Convert(number, sex);
+                Console.Write(Convert(number, sex));
                 Console.WriteLine("\n");
             } while (true);
         }
-        public static void Convert(int num, string sex)
+        public static string Convert(int num, string sex)
         {
-            
+            StringBuilder ans = new StringBuilder();
+            if (numsHt.Count == 0)
+                HashInit();
             if (num == 0)
-            {
-                Console.Write(numsHt[0]);
-                return;
-            }
+                return (string)numsHt[0];
 
             int exp = (int)Math.Pow(10, 6), quot = num / exp;
             if (quot != 0)
             {
                 if (quot == 1)
-                    Console.Write("Un Millon ");
+                    ans.Append("Un Millon ");
                 else
                 {
-                    ConvertPart(quot, sex);
-                    Console.Write("Millones ");
+                    ans.Append(ConvertPart(quot, sex));
+                    ans.Append("Millones ");
                 }
             }
             num %= exp; quot = num / (int)Math.Pow(10, 3);
             if (quot > 0)
             {
-                ConvertPart(quot, sex);
-                Console.Write("Mil ");
+                ans.Append(ConvertPart(quot, sex));
+                ans.Append("Mil ");
             }
-            ConvertPart(num % (int)Math.Pow(10, 3), sex);
+            ans.Append(ConvertPart(num % (int)Math.Pow(10, 3), sex));
+
+            return ans.ToString();
         }
-        public static void ConvertPart(int num, string sex)
+        public static string ConvertPart(int num, string sex)
         {
+            StringBuilder ans = new StringBuilder();
             int quot = num / 100;
 
             if (quot > 1)
-                Console.Write(numsHt[quot * 100] + (sex == "male" ? "os" : "as") + " ");
+                ans.Append(numsHt[quot * 100] + (sex == "male" ? "os" : "as") + " ");
             else if (quot == 1)
-                Console.Write(numsHt[100] + " ");
+                ans.Append(numsHt[100] + " ");
 
             num %= 100; quot = num / 10;
             int remainder = num % 10;
             if (num >= 30)
             {
-                Console.Write(numsHt[quot * 10] + " ");
+                ans.Append(numsHt[quot * 10] + " ");
                 if (remainder != 0)
                 {
-                    Console.Write("y ");
+                    ans.Append("y ");
                     if (remainder == 1)
-                        Console.Write(sex == "male" ? "Un" : "Una" + " ");
+                        ans.Append(sex == "male" ? "Un" : "Una" + " ");
                     else
-                        Console.Write(numsHt[remainder] + " ");
+                        ans.Append(numsHt[remainder] + " ");
                 }
             }
             else if (num >= 21)
             {
-                Console.Write("Veinti");
+                ans.Append("Veinti");
                 if (num == 21)
-                    Console.Write((sex == "male" ? "un" : "una") + " ");
+                    ans.Append((sex == "male" ? "un" : "una") + " ");
                 else
-                    Console.Write(numsHt[remainder].ToString().ToLower() + " ");
+                    ans.Append(numsHt[remainder].ToString().ToLower() + " ");
             }
             else if (num != 0)
             {
                 if (remainder != 1)
-                    Console.Write(numsHt[num] + " ");
+                    ans.Append(numsHt[num] + " ");
                 else
-                    Console.Write((sex == "male" ? "Un" : "Una") + " ");
+                    ans.Append((sex == "male" ? "Un" : "Una") + " ");
             }
+
+            return ans.ToString();
         }
     }
 }

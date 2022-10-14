@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thue_Morse
+namespace ThueMorse
 {
-    internal class Program
+    public class ThueMorse
     {
         public static string Generate(int N)
         {
