@@ -71,8 +71,7 @@ namespace Numbers
                 HashInit();
             if (num == 0)
                 return (string)numsHt[0];
-
-            int exp = (int)Math.Pow(10, 6), quot = num / exp;
+            int exp = (int)1e6, quot = num / exp;
             if (quot != 0)
             {
                 if (quot == 1)
@@ -98,10 +97,13 @@ namespace Numbers
             StringBuilder ans = new StringBuilder();
             int quot = num / 100;
 
-            if (quot > 1)
-                ans.Append(numsHt[quot * 100] + (sex == "male" ? "os" : "as") + " ");
-            else if (quot == 1)
-                ans.Append(numsHt[100] + " ");
+            if (quot >= 1)
+            {
+                ans.Append(numsHt[quot * 100]);
+                if (quot > 1 && quot < 10)
+                    ans.Append((sex == "male" ? "os" : "as"));
+                ans.Append(" ");
+            }
 
             num %= 100; quot = num / 10;
             int remainder = num % 10;

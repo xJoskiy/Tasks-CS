@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clock
 {
-    internal class Clock
+    public class Clock
     {
         public static void Main(string[] args)
         {
@@ -55,51 +55,22 @@ namespace Clock
         static public string ComputeTime(float setDegrees, int hours, int minutes)
         {
             float curDegree = ComputeDegree(hours, minutes);
-            bool up = true;
-            for (int h = hours, m = minutes + 1; h != (h + 2) % 24; m++)
-            {
-                h = (h + m / 60) % 24;
-                m %= 60;
-                if (up)
-                {
-                    curDegree += 5.5f;
-                    if (curDegree > 180)
-                    {
-                        curDegree = 180 - curDegree % 180;
-                        up = false;
-                    }
-                    if (curDegree <= setDegrees)
-                    {
-                        minutes = m;
-                        hours = h;
-                        break;
-                    }
-                }
-                else
-                {
-                    curDegree -= 5.5f;
-                    if (curDegree < 0)
-                    {
-                        curDegree = Math.Abs(curDegree);
-                        up = true;
-                    }
-                    if (curDegree >= setDegrees)
-                    {
-                        minutes = m;
-                        hours = h;
-                        break;
-                    }
-                }
-            }
-            return String.Format("{0}:{1}", hours, minutes);
+
+            if (setDegrees >= curDegree)
+                minutes += (int)Math.Ceiling((setDegrees - curDegree) / 5.5);
+            else
+                minutes += (int)((Math.Abs(360 - curDegree - setDegrees)) / 5.5);
+                
+
+            return String.Format((minutes % 60 > 9 ? "{0}:{1}" : "{0}:0{1}"), (hours + minutes / 60) % 24, minutes % 60);
         }
-        static public float ComputeDegree(int hours, int minutes)
+        static public float ComputeDegree(int hours, int minutes) // Угол между часовой и минутной считая по часовой стрелке
         {
             int minuteDegrees = 6 * minutes;
             float hourDegrees = 30 * hours % 360 + (float)minutes / 2;
-            float angle = Math.Abs(minuteDegrees - hourDegrees);
+            float angle = minuteDegrees - hourDegrees;
 
-            return angle > 180 ? 360 - angle : angle;
+            return angle < 0 ? 360 + angle : angle;
         }
     }
 }

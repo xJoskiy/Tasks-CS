@@ -39,6 +39,14 @@ namespace ThueMorseTest
         }
 
         [TestMethod]
+        public void TestN64()
+        {
+            int N = 64;
+            string expected = "0110100110010110100101100110100110010110011010010110100110010110";
+            Assert.AreEqual(expected, ThueMorse.ThueMorse.Generate(N));
+        }
+
+        [TestMethod]
         public void TestN100()
         {
             int N = 100;

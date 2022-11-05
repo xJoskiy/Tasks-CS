@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Matrix
 {
-    internal class Matrix
+    public class Matrix
     {
-        public static void Rotate(int[,] arr)
+        public static void SwapCol(int[,] arr)
         {
             int dim = arr.GetLength(0);
             for (int i = 0; i < dim; i++)
@@ -57,17 +57,20 @@ namespace Matrix
                     }
                 }
         }
+
+        public static void Rotate(int[,] arr)
+        {
+            Transpose(arr);
+
+            SwapCol(arr);
+        }
         public static void Main(string[] args)
         {
             int[,] arr = null;
             Console.Write("Enter dimensionality >= 3: ");
             int dim = int.Parse(Console.ReadLine());
-            
+
             Initialize(out arr, dim);
-
-            Print(arr);
-
-            Transpose(arr);
 
             Print(arr);
 

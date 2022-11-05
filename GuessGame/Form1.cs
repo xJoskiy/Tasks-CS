@@ -22,6 +22,32 @@ namespace GuessGame
 
             Start();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void Start()
         {
             Random random = new Random((int)DateTime.Now.Ticks);
