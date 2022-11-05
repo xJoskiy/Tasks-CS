@@ -13,7 +13,7 @@ namespace ThueMorse
             StringBuilder init = new StringBuilder("0");
 
             for (int i = 0; init.Length < N; i++)
-                for (int j = 0; j < Math.Pow(2, i); j++)
+                for (int j = 0; j < N; j++)
                     init.Append(init[j] == '0' ? "1" : "0");
 
             init.Remove(N, init.Length - N);
