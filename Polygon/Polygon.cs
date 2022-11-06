@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,27 +64,41 @@ namespace Polygon
                         return true;
                     else c = !c;
                 }
-                    
+
             }
 
             return c;
         }
         static void Main(string[] args)
         {
-            float[] xCoords = { -10f, -5f, 0f, 0f, -5f, -10f, -15f, -15f };
-            float[] yCoords = { 0f, 0f, 0f, 10f, 10f, 10f, 10f, 0f };
-
-            float xPoint = -15f, yPoint = 0f;
+            float[] xCoords, yCoords;
+            float xPoint, yPoint;
 
             List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
+            Point point = new Point();
+            do
+            {
+                Console.Write("Enter X coordinates of polygon: ");
+                xCoords = Console.ReadLine().Split().Select(float.Parse).ToArray();
 
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
+                Console.Write("Enter Y coordinates of polygon: ");
+                yCoords = Console.ReadLine().Split().Select(float.Parse).ToArray();
 
+                Console.WriteLine("\nEnter coordinates of point: ");
+                Console.Write("X: ");
+                xPoint = float.Parse(Console.ReadLine());
 
-            Console.WriteLine(IsInside(poly, point));
-            Console.ReadKey();
+                Console.Write("Y: ");
+                yPoint = float.Parse(Console.ReadLine());
+
+                point = new Point(xPoint, yPoint);
+
+                for (int i = 0; i < xCoords.Length; i++)
+                    poly.Add(new Point(xCoords[i], yCoords[i]));
+
+                Console.WriteLine("\nPoint is " + (IsInside(poly, point) ? "in" : "out") + "side\n");
+
+            } while (true);
 
         }
     }
