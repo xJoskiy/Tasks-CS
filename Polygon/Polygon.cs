@@ -64,42 +64,37 @@ namespace Polygon
                         return true;
                     else c = !c;
                 }
-
             }
 
             return c;
         }
         static void Main(string[] args)
         {
-            float[] xCoords, yCoords;
-            float xPoint, yPoint;
+            float[] coord;
+            int N;
 
             List<Point> poly = new List<Point>();
-            Point point = new Point();
+            Point point;
             do
             {
-                Console.Write("Enter X coordinates of polygon: ");
-                xCoords = Console.ReadLine().Split().Select(float.Parse).ToArray();
+                Console.Write("Enter number of points in polygon: ");
+                N = int.Parse(Console.ReadLine());
 
-                Console.Write("Enter Y coordinates of polygon: ");
-                yCoords = Console.ReadLine().Split().Select(float.Parse).ToArray();
+                Console.WriteLine("\nEnter coordinates of each point in the following format: x y\n");
 
-                Console.WriteLine("\nEnter coordinates of point: ");
-                Console.Write("X: ");
-                xPoint = float.Parse(Console.ReadLine());
+                for (int i = 0; i < N; i++)
+                {
+                    coord = Console.ReadLine().Split().Select(float.Parse).ToArray();
+                    poly.Add(new Point(coord[0], coord[1]));
+                }
+                Console.WriteLine("\nEnter coordinates of point you want to check\n");
+                coord = Console.ReadLine().Split().Select(float.Parse).ToArray();
 
-                Console.Write("Y: ");
-                yPoint = float.Parse(Console.ReadLine());
+                point = new Point(coord[0], coord[1]);
 
-                point = new Point(xPoint, yPoint);
-
-                for (int i = 0; i < xCoords.Length; i++)
-                    poly.Add(new Point(xCoords[i], yCoords[i]));
-
-                Console.WriteLine("\nPoint is " + (IsInside(poly, point) ? "in" : "out") + "side\n");
-
+                Console.WriteLine($"\nPoint is {(IsInside(poly, point) ? "in" : "out")}side");
+                Console.WriteLine("\n--------------------------\n");
             } while (true);
-
         }
     }
 }
