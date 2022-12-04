@@ -2,12 +2,26 @@
 using System;
 using static Polygon.Polygon;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace PolygonTest
 {
     [TestClass]
     public class PolygonTest
     {
+
+        // сделать метод для инициализации
+        void InitAndCheck(bool expected, float[] xCoords, float[] yCoords, float xPoint, float yPoint)
+        {
+            List<Point> poly = new List<Point>();
+            Point point = new Point(xPoint, yPoint);
+
+            for (int i = 0; i < xCoords.Length; i++)
+                poly.Add(new Point(xCoords[i], yCoords[i]));
+
+            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+        }
+
         [TestMethod]
         public void OnTheEdge()
         {
@@ -18,13 +32,8 @@ namespace PolygonTest
 
             bool expected = true;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
+            
         }
 
         [TestMethod]
@@ -37,13 +46,7 @@ namespace PolygonTest
 
             bool expected = true;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
@@ -56,13 +59,7 @@ namespace PolygonTest
 
             bool expected = false;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
@@ -75,13 +72,7 @@ namespace PolygonTest
 
             bool expected = true;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
@@ -94,13 +85,7 @@ namespace PolygonTest
 
             bool expected = true;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
@@ -113,13 +98,7 @@ namespace PolygonTest
 
             bool expected = false;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
@@ -132,13 +111,7 @@ namespace PolygonTest
 
             bool expected = false;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
@@ -151,32 +124,33 @@ namespace PolygonTest
 
             bool expected = false;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
-        public void TriangleInside()
+        public void ParallelOutside()
         {
-            float[] xCoords = { -20f, -10f, -20f, 10f };
-            float[] yCoords = { -15f, 0f, 15f, 0f };
+            float[] xCoords = { -3f, -15f, 0f, 15f, 3f, 3f, -3f };
+            float[] yCoords = { 0f, 0f, 15f, 0f, 0f, 4f, 4f };
 
-            float xPoint = 10f, yPoint = 0f;
+            float xPoint = -20f, yPoint = 0f;
 
-            bool expected = true;
+            bool expected = false;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
+        }
 
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
+        [TestMethod]
+        public void ParallelOutside2()
+        {
+            float[] xCoords = { -3f, -15f, 0f, 15f, 3f, 3f, -3f };
+            float[] yCoords = { 0f, 0f, 15f, 0f, 0f, 4f, 4f };
 
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            float xPoint = 0f, yPoint = 0f;
+
+            bool expected = false;
+
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
 
         [TestMethod]
@@ -189,13 +163,7 @@ namespace PolygonTest
 
             bool expected = true;
 
-            List<Point> poly = new List<Point>();
-            Point point = new Point(xPoint, yPoint);
-
-            for (int i = 0; i < xCoords.Length; i++)
-                poly.Add(new Point(xCoords[i], yCoords[i]));
-
-            Assert.AreEqual(expected, Polygon.Polygon.IsInside(poly, point));
+            InitAndCheck(expected, xCoords, yCoords, xPoint, yPoint);
         }
     }
 }

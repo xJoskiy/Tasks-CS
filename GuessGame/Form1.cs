@@ -12,78 +12,55 @@ namespace GuessGame
 {
     public partial class Form1 : Form
     {
-        int loses, wins, numToGuess, attempts;
-        int start = 0, end = 10;
+        private int loses, wins, numToGuess, attempts;
+        private int start = 0, end = 10;
 
 
         public Form1()
         {
             InitializeComponent();
-
-            Start();
+            NewGame();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Start()
+        private void NewGame()
         {
             Random random = new Random((int)DateTime.Now.Ticks);
             numToGuess = random.Next(1, 10);
             attempts = 3; start = 0; end = 10;
-            label2.Text = "Entert a number";
-            textBox1.Text = "";
-            button1.Enabled = true;
+            EnterTextBox.Text = "";
+            ControlLabel.Text = "Enter a number";
+            GuessButton.Enabled = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Guess_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox1.Text, out int num))
+            if (int.TryParse(EnterTextBox.Text, out int num))
                 Guessing(num);
             else
-                label2.Text = "It seems like you ain't entered a number";
+                ControlLabel.Text = "It seems like you ain't entered a number";
         }
-        private void button2_Click(object sender, EventArgs e)
+
+        private void Guess_Enter(object sender, KeyEventArgs e)
         {
-            Start();
+            if (e.KeyValue == (char)Keys.Enter)
+                Guess_Click(this, null);
         }
+        private void Reset_Click(object sender, EventArgs e) => NewGame();
 
         private void Guessing(int number)
         {
             if (start >= number || number >= end)
             {
-                label2.Text = "Are you silly?";
+                ControlLabel.Text = "Are you silly?";
                 return;
             }
 
             if (number == numToGuess)
             {
-                label2.Text = "You Won!";
-                button1.Enabled = false;
+                ControlLabel.Text = "You Won!";
+                GuessButton.Enabled = false;
                 wins++;
-                label3.Text = "Correclty guessed: " + wins.ToString() + " / " + (loses + wins).ToString();
+                CorrectCountLabel.Text = "Correclty guessed: " + wins.ToString() + " / " + (loses + wins).ToString();
                 return;
             }
             else if (number > numToGuess)
@@ -94,14 +71,14 @@ namespace GuessGame
             attempts--;
             if (attempts == 0)
             {
-                label2.Text = "You are out of attempts! Correct answer: " + numToGuess.ToString();
-                button1.Enabled = false;
+                ControlLabel.Text = "You are out of attempts! Correct answer: " + numToGuess.ToString();
+                GuessButton.Enabled = false;
                 loses++;
-                label3.Text = "Correclty guessed: " + wins.ToString() + " / " + (loses + wins).ToString();
+                CorrectCountLabel.Text = "Correclty guessed: " + wins.ToString() + " / " + (loses + wins).ToString();
                 return;
             }
-           
-            label2.Text = number > numToGuess ? "Less" : "More";
+
+            ControlLabel.Text = number > numToGuess ? "Less" : "More";
         }
     }
 }

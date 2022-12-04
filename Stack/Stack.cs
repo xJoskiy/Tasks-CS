@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,36 +11,34 @@ namespace Stack
     {
         private T[] stack;
         private const int initSize = 10;
-        private uint size;
+        public uint Size { get; private set; }
+        public bool IsEmpty => Size == 0;
+
         public Stack()
         {
             stack = new T[initSize];
-            size = 0;
+            Size = 0;
         }
 
         public void Push(T el)
         {
-            if (size == 10)
+            if (Size == 10)
                 throw new InvalidOperationException("Stack overflow");
-            stack[size++] = el;
+            stack[Size++] = el;
         }
         public T Pop()
         {
-            if (size == 0)
+            if (IsEmpty)
                 throw new InvalidOperationException("Stack is empty");
-            T temp = stack[size-- - 1];
+            T temp = stack[Size-- - 1];
 
             return temp;
         }
         public T Peek()
         {
-            if (size == 0)
+            if (Size == 0)
                 throw new InvalidOperationException("Stack is empty");
-            return stack[size - 1];
-        }
-        public uint GetSize()
-        {
-            return size;
+            return stack[Size - 1];
         }
     }
     internal class Stack
@@ -47,8 +46,6 @@ namespace Stack
         public static void Main(string[] args)
         {
             Stack<int> stack = new Stack<int>();
-
-            stack.Pop();
 
             Console.ReadKey();
         }

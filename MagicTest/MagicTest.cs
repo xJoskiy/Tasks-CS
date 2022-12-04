@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace BinaryTest
+namespace MagicTest
 {
     [TestClass]
-    public class UnitTest1
+    public class MagicTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Test1()
         {
         }
     }

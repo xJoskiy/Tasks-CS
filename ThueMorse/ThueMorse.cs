@@ -32,7 +32,7 @@ namespace ThueMorse
                     if (int.TryParse(Console.ReadLine(), out steps))
                         break;
 
-                    Console.WriteLine("Your input is not an natural number, try again");
+                    Console.WriteLine("Your input is not a natural number, try again");
 
                 } while (true);
 

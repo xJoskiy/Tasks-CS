@@ -6,16 +6,23 @@ using System.Threading.Tasks;
 
 namespace Beads
 {
-    internal class Beads
+    public class Beads
     {
-        private static ulong Calculate(int N, int red, int blue, int green)
+        public static int Calculate(int N, int red, int blue, int green, int curLen = 0, bool prevIsRed = false)
         {
-            if (N == 1)
-                return (ulong)(red % 1 + blue % 1 + green % 1);
-            else if (N % 2 == 0)
-                return 2 * Calculate(N - 1, red, blue, green);
-            else
-                return 5 * Calculate(N - 1, red, blue, green) / 2;
+            int total = 0;
+            if (curLen == N)
+                return 1;
+
+            if (red > 0 && curLen % 2 == 0)
+                total += Calculate(N, red - 1, blue, green, curLen + 1, true);
+            if (blue > 0 && !prevIsRed)
+                total += Calculate(N, red, blue - 1, green, curLen + 1);
+            if (green > 0)
+                total += Calculate(N, red, blue, green - 1,  curLen + 1);
+
+
+            return total;
         }
         public static void Main(string[] args)
         {
@@ -25,6 +32,7 @@ namespace Beads
                 int red = int.Parse(Console.ReadLine());
                 int blue = int.Parse(Console.ReadLine());
                 int green = int.Parse(Console.ReadLine());
+
                 if (int.TryParse(Console.ReadLine(), out int N))
                     Console.WriteLine("Total possible beads: " + Calculate(N, red, blue, green).ToString() + "\n");
                 else

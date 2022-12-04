@@ -13,7 +13,7 @@ namespace Polygon
         {
             public float x;
             public float y;
-            public Point(float _x, float _y) { x = _x; y = _y; }
+            public Point(float x, float y) { this.x = x; this.y = y; }
         }
         public static bool IsInside(List<Point> poly, Point point)
         {
@@ -25,12 +25,22 @@ namespace Polygon
 
             // if it intersects, we just consider both points of the edge as a single point
             for (int i = 0; i < N; i++)
+            {
+                float min = Math.Min(poly[i].x, poly[(i + 1) % N].x);
+                float max = Math.Max(poly[i].x, poly[(i + 1) % N].x);
+                
+
                 if (poly[(i + 1) % N].y == poly[i].y && point.y == poly[i].y)
                 {
+                    if (!(point.x < min || point.x > max))
+                        return true;
+
                     poly.RemoveAt(poly[(i + 1) % N].x == point.x ? i : (i + 1) % N);
                     N = poly.Count;
                     i--;
                 }
+
+            }
 
             for (int i = 0; i < N; i++)
             {
@@ -49,7 +59,7 @@ namespace Polygon
                 if (xCross == poly[i].x || xCross == poly[(i + 1) % N].x)
                 {
                     // if it coincides the vertex => it is inside
-                    if (poly[i].x == point.x || poly[(i + 1) % N].x == point.x)
+                    if (xCross == point.x)
                         return true;
 
                     // count only if it intersect the highest point of edge
@@ -57,7 +67,7 @@ namespace Polygon
                         c = !c;
                 }
                 // intersection with edge 
-                else if (xCross >= point.x && xMin < xCross && xCross < xMax)
+                else if (xCross >= point.x && xMin <= xCross && xCross <= xMax)
                 {
                     // if it is on the edge => it is inside
                     if (xCross == point.x)

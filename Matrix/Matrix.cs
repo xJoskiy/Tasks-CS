@@ -67,7 +67,7 @@ namespace Matrix
         public static void Main(string[] args)
         {
             int[,] arr = null;
-            Console.Write("Enter dimensionality >= 3: ");
+            Console.Write("Enter dimensionality >= 2: ");
             int dim = int.Parse(Console.ReadLine());
 
             Initialize(out arr, dim);
@@ -81,4 +81,5 @@ namespace Matrix
             Console.ReadKey();
         }
     }
+
 }

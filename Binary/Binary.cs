@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Binary
 {
-    internal class Binary
+    public class Binary
     {
-        static void Generate(int num)  //to string
+        public static List<string> Generate(int num) 
         {
-            Console.WriteLine(num.ToString() + " " + Convert.ToString(num, 2));
+            List<string> answer = new List<string>();
+            answer.Add(Convert.ToString(num, 2));
             int bit_count = num == 0 ? 1 : (int)Math.Ceiling(Math.Log(num + 1, 2));
             for (int i = 0; i < bit_count; i++)
-            {
-                int number = num ^ (1 << i);
-                Console.WriteLine(number.ToString() + " " + Convert.ToString(number, 2));
-            }
+                answer.Add(Convert.ToString(num ^ (1 << i), 2));
+
+            return answer;
         }
         static void Main(string[] args)
         {
@@ -26,7 +26,10 @@ namespace Binary
             {
                 Console.Write("Enter the number: ");
                 int number = int.Parse(Console.ReadLine());
-                Generate(number);
+                List<string> strings = Generate(number);
+                foreach(string s in strings)
+                    Console.WriteLine(s);
+
                 Console.WriteLine();
             }
         }

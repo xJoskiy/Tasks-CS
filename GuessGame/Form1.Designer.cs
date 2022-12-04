@@ -16,193 +16,128 @@
 
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            this.flowLayoutPanel7.SuspendLayout();
+            this.CorrectCountLabel = new System.Windows.Forms.Label();
+            this.ControlLabel = new System.Windows.Forms.Label();
+            this.ResetButton = new System.Windows.Forms.Button();
+            this.GuessButton = new System.Windows.Forms.Button();
+            this.EnterTextBox = new System.Windows.Forms.TextBox();
+            this.GreetingLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // panel1
+            // CorrectCountLabel
             // 
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.flowLayoutPanel7);
-            this.panel1.Controls.Add(this.flowLayoutPanel3);
-            this.panel1.Controls.Add(this.flowLayoutPanel2);
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1077, 483);
-            this.panel1.TabIndex = 6;
+            this.CorrectCountLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CorrectCountLabel.AutoSize = true;
+            this.CorrectCountLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CorrectCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.CorrectCountLabel.Location = new System.Drawing.Point(47, 236);
+            this.CorrectCountLabel.Name = "CorrectCountLabel";
+            this.CorrectCountLabel.Size = new System.Drawing.Size(154, 23);
+            this.CorrectCountLabel.TabIndex = 5;
+            this.CorrectCountLabel.Text = "Correctly guessed: ";
             // 
-            // button2
+            // ControlLabel
             // 
-            this.button2.Location = new System.Drawing.Point(116, 2);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(198, 98);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ControlLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ControlLabel.AutoSize = true;
+            this.ControlLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ControlLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.ControlLabel.Location = new System.Drawing.Point(374, 138);
+            this.ControlLabel.Name = "ControlLabel";
+            this.ControlLabel.Size = new System.Drawing.Size(129, 23);
+            this.ControlLabel.TabIndex = 3;
+            this.ControlLabel.Text = "Enter a number";
+            this.ControlLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label3
+            // ResetButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Correctly guessed: ";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.ResetButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ResetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ResetButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(202)))), ((int)(((byte)(202)))));
+            this.ResetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ResetButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResetButton.Location = new System.Drawing.Point(51, 353);
+            this.ResetButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(106, 45);
+            this.ResetButton.TabIndex = 4;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.Reset_Click);
             // 
-            // button1
+            // GuessButton
             // 
-            this.button1.AllowDrop = true;
-            this.button1.AutoEllipsis = true;
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(318, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 98);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Guess";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.GuessButton.AllowDrop = true;
+            this.GuessButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GuessButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(202)))), ((int)(((byte)(202)))));
+            this.GuessButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GuessButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuessButton.Location = new System.Drawing.Point(397, 353);
+            this.GuessButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GuessButton.Name = "GuessButton";
+            this.GuessButton.Size = new System.Drawing.Size(106, 45);
+            this.GuessButton.TabIndex = 2;
+            this.GuessButton.Text = "Guess";
+            this.GuessButton.UseVisualStyleBackColor = false;
+            this.GuessButton.Click += new System.EventHandler(this.Guess_Click);
             // 
-            // textBox1
+            // EnterTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(2, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.EnterTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EnterTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(202)))), ((int)(((byte)(202)))));
+            this.EnterTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EnterTextBox.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EnterTextBox.Location = new System.Drawing.Point(370, 239);
+            this.EnterTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EnterTextBox.Name = "EnterTextBox";
+            this.EnterTextBox.Size = new System.Drawing.Size(153, 30);
+            this.EnterTextBox.TabIndex = 1;
             // 
-            // label2
+            // GreetingLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(567, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Поле";
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(208, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(355, 46);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Сейчас загадаем число от 1 до 9, будешь его угадывать";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.UseCompatibleTextRendering = true;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel6);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.label2);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1077, 168);
-            this.flowLayoutPanel1.TabIndex = 7;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 168);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1077, 0);
-            this.flowLayoutPanel2.TabIndex = 9;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 168);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1077, 0);
-            this.flowLayoutPanel3.TabIndex = 10;
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.Controls.Add(this.textBox1);
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(200, 100);
-            this.flowLayoutPanel6.TabIndex = 13;
-            // 
-            // flowLayoutPanel7
-            // 
-            this.flowLayoutPanel7.Controls.Add(this.label3);
-            this.flowLayoutPanel7.Controls.Add(this.button2);
-            this.flowLayoutPanel7.Controls.Add(this.button1);
-            this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(0, 383);
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(1077, 100);
-            this.flowLayoutPanel7.TabIndex = 13;
-            this.flowLayoutPanel7.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel7_Paint);
+            this.GreetingLabel.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.GreetingLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GreetingLabel.AutoSize = true;
+            this.GreetingLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GreetingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.GreetingLabel.Location = new System.Drawing.Point(272, 61);
+            this.GreetingLabel.Name = "GreetingLabel";
+            this.GreetingLabel.Size = new System.Drawing.Size(361, 23);
+            this.GreetingLabel.TabIndex = 4;
+            this.GreetingLabel.Text = "You need to guess a number between 1 and 9";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 483);
-            this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.ClientSize = new System.Drawing.Size(902, 468);
+            this.Controls.Add(this.ControlLabel);
+            this.Controls.Add(this.EnterTextBox);
+            this.Controls.Add(this.ResetButton);
+            this.Controls.Add(this.GuessButton);
+            this.Controls.Add(this.CorrectCountLabel);
+            this.Controls.Add(this.GreetingLabel);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(920, 515);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            this.flowLayoutPanel7.ResumeLayout(false);
-            this.flowLayoutPanel7.PerformLayout();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Guess_Enter);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.Button GuessButton;
+        private System.Windows.Forms.Button ResetButton;
+        private System.Windows.Forms.TextBox EnterTextBox;
+        private System.Windows.Forms.Label ControlLabel;
+        private System.Windows.Forms.Label CorrectCountLabel;
+        private System.Windows.Forms.Label GreetingLabel;
     }
 }
 
