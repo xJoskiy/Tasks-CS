@@ -60,7 +60,7 @@ namespace Matrix
 
         public static void Rotate(int[,] arr)
         {
-            Transpose(arr);
+            Transpose(arr); // Транспонирование 
 
             SwapCol(arr);
         }
